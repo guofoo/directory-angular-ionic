@@ -14,6 +14,13 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
       controller: 'EmployeeIndexCtrl'
     })
     
+    .state('employee', {
+      url: '/employees/:employeeId',
+      templateUrl: 'templates/employee-detail.html',
+      controller: 'EmployeeDetailCtrl'
+    })  
+    
+    
     ;
   
     // if none of the above states are matched, use this as the fallback
