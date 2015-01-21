@@ -18,10 +18,35 @@ describe('Employee Directory App', function(){
       element.all(by.css('.item-content')).get(0).click();
       browser.sleep(1000);
       expect(element(by.css('.card')).isPresent()).toBe(true);
-      expect(element.all(by.css('.card .item')).count()).toBe(5);
-      expect(element(by.css('.item-avatar h2')).getText()).toBe('James King');
+    });
+  });
+  
+  describe('Employee detail page: ', function(){
+    //go to the detail page of James King
+    beforeEach(function() {
+      browser.get('index.html');
+      element.all(by.css('.item-content')).get(0).click();
+      browser.sleep(1000);      
     });
     
+    it('it should have employee information in a card layout and show employee full name in h2 element', function(){
+      expect(element.all(by.css('.card .item')).count()).toBe(5);
+      expect(element(by.css('.item-avatar h2')).getText()).toBe('James King'); 
+    });
+    
+    it('There should be 4 link items and about employee\'s office phone, cell phone, sms and email respectively', function(){
+      checkLinkItem(0, '781-000-0001');
+      checkLinkItem(1, '617-000-0001');
+      checkLinkItem(2, '617-000-0001');
+      checkLinkItem(3, 'jking@fakemail.com');
+    });
+ 
+    var checkLinkItem = function(index, textToHave){
+      var elem = element.all(by.css('a.item')).get(index);
+      elem.getAttribute('href').then(function(attr){
+        expect(attr).toContain(textToHave);
+      });
+    };    
   });
   
 });
