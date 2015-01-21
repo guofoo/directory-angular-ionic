@@ -25,10 +25,14 @@ angular.module('directory.controllers', [])
 
   })
     
-  .controller('EmployeeDetailCtrl', function($scope, $stateParams, EmployeeService) {
-    EmployeeService.findById($stateParams.employeeId).then(function (employee) {
-      $scope.employee = employee;  
-    });
+  .controller('EmployeeDetailCtrl', function($scope, employee) {
+    $scope.employee = employee;  
   })    
+   
+  .controller('EmployeeReportsCtrl', function ($scope, employee, reports) {
+    $scope.employee = employee;
+    $scope.reports = reports;
+  })
+   
     
 ;

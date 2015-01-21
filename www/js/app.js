@@ -8,7 +8,7 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $stateProvider
     
-    .state('employee-index', {
+    .state('employees', {
       url: '/employees',
       templateUrl: 'templates/employee-index.html',
       controller: 'EmployeeIndexCtrl'
@@ -17,9 +17,27 @@ angular.module('directory', ['ionic','directory.services','directory.controllers
     .state('employee', {
       url: '/employees/:employeeId',
       templateUrl: 'templates/employee-detail.html',
-      controller: 'EmployeeDetailCtrl'
+      controller: 'EmployeeDetailCtrl',
+      resolve: {
+        employee: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
+          return EmployeeService.findById($stateParams.employeeId);
+        }]
+      }
     })  
-    
+
+    .state('reports', {
+      url: '/employees/:employeeId/reports',
+      templateUrl: 'templates/employee-reports.html',
+      controller: 'EmployeeReportsCtrl',
+      resolve: {
+        employee: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
+          return EmployeeService.findById($stateParams.employeeId);
+        }],
+        reports: ['EmployeeService', '$stateParams', function(EmployeeService, $stateParams){
+          return EmployeeService.findByManager($stateParams.employeeId);
+        }]
+      }
+    })
     
     ;
   
