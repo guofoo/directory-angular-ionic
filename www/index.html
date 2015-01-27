@@ -22,13 +22,36 @@
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
   </head>
-  <body ng-app="directory">
+  <body ng-app="directory" ng-controller="EmployeesCtrl">
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
+        <h1 class="title">Employee Directory</h1>
       </ion-header-bar>
       <ion-content>
+        <h3>All Employees</h3>
+        <ion-list>
+          <ion-item ng-repeat="employee in employees">
+            {{employee.firstName}} {{employee.firstName}}
+          </ion-item>
+        </ion-list> 
+        
+        <h3>Employee by id</h3>
+        <p>{{employee.firstName}} {{employee.firstName}}</p>
+        
+        <h3>Search Employees</h3>
+        <ion-list>
+          <ion-item ng-repeat="employee in searchEmployees">
+            {{employee.firstName}} {{employee.firstName}}
+          </ion-item>
+        </ion-list>    
+        
+        <h3>Employees by Manager</h3>
+        <ion-list>
+          <ion-item ng-repeat="employee in employeesByManager">
+            {{employee.firstName}} {{employee.firstName}}
+          </ion-item>
+        </ion-list>         
       </ion-content>
     </ion-pane>
   </body>

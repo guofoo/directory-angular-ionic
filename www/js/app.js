@@ -17,3 +17,24 @@ angular.module('directory', ['ionic','directory.services'])
     }
   });
 })
+
+.controller('EmployeesCtrl', function($scope, EmployeeService) {
+  //get all employees
+  EmployeeService.findAll().then(function(employees){
+    $scope.employees = employees;
+  });
+  
+  //find the second employee
+  EmployeeService.findById(2).then(function(employee){
+    $scope.employee = employee;
+  });
+  
+  EmployeeService.findByName('John').then(function(searchEmployees){
+    $scope.searchEmployees = searchEmployees;
+  });
+  
+  EmployeeService.findByManager(1).then(function(employeesByManager){
+    $scope.employeesByManager = employeesByManager;
+  });
+  
+});
