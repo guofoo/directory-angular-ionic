@@ -8,8 +8,10 @@
       <h2>{{employee.firstName}} {{employee.lastName}}</h2>
       <p>{{employee.title}}</p>
     </div>
-    <a ng-repeat="report in reports" class="item item-avatar item-icon-left" 
-      href="#/employees/{{report.id}}">
+    <!-- loop through employee reports use <a>
+      and click the link should redirect to report person's detail page-->
+    <a class="item item-avatar item-icon-left" 
+      ng-repeat="" href="">
       
       <img src="pics/{{report.pic }}"/>
       {{report.firstName}} {{report.lastName}}
