@@ -26,9 +26,20 @@ angular.module('directory.controllers', [])
 })
   
 .controller('EmployeeDetailCtrl', function($scope, $stateParams, EmployeeService) {
-  EmployeeService.findById($stateParams.employeeId).then(function (employee) {
-    $scope.employee = employee;  
-  });
+  
+  $scope.employee = null;
+  
+  //get employeeId from $stateParams
+  //get employee object from EmployeeService
+  //assign the result to $scope.employee
+  var findEmployee = function(){
+  
+  
+    
+  };
+  
+  findEmployee();
+
 })    
   
 ;
