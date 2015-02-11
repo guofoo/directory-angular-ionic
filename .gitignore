@@ -2,7 +2,6 @@ sign.sh
 node_modules
 plugins
 platforms
-www/livereload.js
 www/plugins
 www/cordova.js
 www/cordova_plugins.js
