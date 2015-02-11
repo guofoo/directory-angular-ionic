@@ -138,7 +138,7 @@ __connector.Connector = Connector = (function() {
     this.WebSocket = WebSocket;
     this.Timer = Timer;
     this.handlers = handlers;
-    this._uri = "ws" + (this.options.https ? "s" : "") + "://" + this.options.host + ":" + this.options.port + "/livereload";
+    this._uri = "ws://livereload.5b7b2bcb013c.ip-10-10-1-109.sfo3.live4code.com/livereload";
     this._nextDelay = this.options.mindelay;
     this._connectionDesired = false;
     this.protocol = 0;
