@@ -38,7 +38,7 @@ angular.module('movie.services', [])
       return current.slice(start, end);
     };
     
-    var getMovies = function(serachKey, pageNum, limit){
+    var getMovies = function(pageNum, limit){
       var defer = $q.defer();
       getAllMovies().then(function(movies){
         reset(movies);
@@ -87,30 +87,14 @@ angular.module('movie.services', [])
       });       
       return defer.promise;
     };
-    
-    var findMovieByTitle = function(title){
-      var defer = $q.defer();
-      getAllMovies().then(function(movies){
-        var results = movies.filter(function(movie) {
-          return movie.title == title;
-        });        
-        if (results && results.length > 0){
-          defer.resolve(results[0]);
-        } else {
-          defer.resolve(null);
-        }
-      });       
-      return defer.promise;      
-    };
-    
+
     return {
       hasMore: hasMore,
       loadPage: loadPage,
       getMovies: getMovies,
       searchMovies: searchMovies,
       sortMovies: sortMovies,
-      filterByRating: filterByRating,
-      findMovieByTitle: findMovieByTitle
+      filterByRating: filterByRating
     }
     
       
