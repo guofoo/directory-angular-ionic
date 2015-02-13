@@ -1,62 +1,27 @@
 <ion-view view-title="Movie App">
-  <ion-nav-buttons side="right">
-    <button class="button button-icon ion-more" ng-click="popover.show($event)"></button>
-  </ion-nav-buttons>
-
-  <div class="bar bar-subheader item-input-inset">
-    <label class="item-input-wrapper" id="search-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input id="searchKey" type="search" placeholder="Search" autocorrect="off" ng-model="searchKey">
-    </label>
-    <button class="button button-clear icon ion-close-round" ng-click="searchKey=''"></button>
-  </div>
 
   <ion-content id="content" class="has-header has-subheader has-footer">
-
+  
     <ion-list>
       <ion-item ng-repeat="movie in movies" class="item-thumbnail-left item-text-wrap" style="display:flex;" 
         href="#/movie/{{movie.title}}">
         <img ng-src="data/pics/{{movie.poster.imdb}}">
         <div class="movie-intro">
           <h2>{{movie.title}}</h2>
-          <p>{{movie.release_date | releaseDate }}&nbsp;&nbsp;&nbsp;<score rating="{{movie.rating}}"></score></p>
+          <p>{{movie.release_date}}&nbsp;&nbsp;&nbsp;{{movie.rating}}</p>
         </div>
       </ion-item>
     </ion-list>
-
+  
+    <!-- ng-if check if need to further scroll -->
+    <!-- on-infinite is called to load more data when scroller is at bottom -->
     <ion-infinite-scroll
-            ng-if="hasMoreData()"
-            icon="ion-loading-c"
-            on-infinite="loadMoreData()"
-            distance="1%">
+      ng-if=""
+      icon="ion-loading-c"
+      on-infinite=""
+      distance="1%">
     </ion-infinite-scroll>
-
+  
   </ion-content>
 
-  <div class="bar bar-footer">
-    <div class="slider-title">Filter Rating</div>
-    <div id="slider"></div>
-  </div>
-    
 </ion-view>
-
-<script id="templates/popover.html" type="text/ng-template">
-  <ion-popover-view style="height: 220px">
-    <ion-content>
-      <div class="list">
-        <a class="item" ng-click="sortMovies('title')">
-          Sort by Title
-        </a>
-        <a class="item" ng-click="sortMovies('rating')">
-          Sort by Rating
-        </a>
-        <a class="item" ng-click="sortMovies('release_date')">
-          Sort by Release Date
-        </a>
-        <a class="item" ng-click="sortMovies('rating_count')">
-          Sort by Porpularity
-        </a>        
-      </div>
-    </ion-content>
-  </ion-popover-view>
-</script> 

@@ -9,7 +9,6 @@ angular.module('movie.services', [])
       if (movies.length === 0){
         $http.get('data/movies.json').success(function(data){
           movies = data;
-          window.movies = movies;
           defer.resolve(movies);
         })
       } else{
