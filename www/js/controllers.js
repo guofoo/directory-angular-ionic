@@ -1,5 +1,6 @@
 angular.module('movie.controllers', [])
 
+//$ionicPopover provides the popover menu needed to show the sort options
 .controller('MovieHomeCtrl', ['$scope', 'MovieService', '$ionicPopover', function($scope, MovieService, $ionicPopover){
   $scope.sortKey = '';
   var sortOrder = 1;
@@ -30,61 +31,34 @@ angular.module('movie.controllers', [])
     }); 
   });
 
+  //sort movie funcionality
+  //sortKey is passed in from ng-click on view
   $scope.sortMovies = function(sortKey){
+    //click the same sorkey for the reverse order
+    //use sortOrder to keep track of the order of sorting
     if ($scope.sortKey == sortKey){
       sortOrder = (-1) * sortOrder;
     }
+    //set currentPage to 0 makes sure to grab the first 20 records of sorting results
     currentPage = 0;
-    $scope.sortKey = sortKey;
-    MovieService.sortMovies($scope.sortKey, sortOrder, currentPage, limit).then(function(movies){
-      $scope.movies = movies;
-    }); 
+    //save sortKey to scope and complete the sort movies function using function in MovieService
+
+
+
+
   };
 
-  $scope.filterMovies = function(){
-    var range = $slider.val();
-    currentPage = 0;
-    MovieService.filterByRating(range[0], range[1], currentPage, limit).then(function(movies){
-      $scope.movies = movies;
-    });
-  }
 
+  //shows the usage of $ionicPopover, see ionic documentation for detail explanation.
+  //the name for the popover view is 'templates/popover', it is the templateUrl for the $ionicPopover directive.
+  //we use ng-template to provide the view, it is in the movie-index.html
   $ionicPopover.fromTemplateUrl('templates/popover.html', {
-    scope: $scope,
+    //attach the current scope, so ng-click in the popover template is wired to the method defined above
+    scope: $scope, 
   }).then(function(popover) {
     $scope.popover = popover;
   });
-
-  var $slider = $("#slider");
-  $slider.noUiSlider({
-    start: [ 0, 10 ],
-    connect: true,
-    step: 0.5,
-    range: {
-      'min': 0,
-      'max': 10
-    }
-  });
-  $slider.Link('lower').to('-inline-<div class="tooltip"></div>', function ( value ) {
-    $(this).html(
-      '<span>' + value.substr(0, value.length - 1) + '</span>'
-    );
-  });
-  $slider.Link('upper').to('-inline-<div class="tooltip"></div>', function ( value ) {
-    $(this).html(
-      '<span>' + value.substr(0, value.length - 1) + '</span>'
-    );
-  });
-  $slider.on({change: $scope.filterMovies});
         
-}])
-
-.controller('MovieDetailCtrl', ['$scope', '$location', 'movie', function($scope, $location, movie){
-  if(!movie){
-    $location.path('/movies');
-  }
-  $scope.movie = movie;
-
 }])
 
 ;
