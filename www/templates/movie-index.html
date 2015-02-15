@@ -14,12 +14,14 @@
   <ion-content id="content" class="has-header has-subheader has-footer">
 
     <ion-list>
+      <!-- use movie's title to identiy movie and redirect to the movie detail page-->
+      <!-- the movie title can be retrived from ui router $statteParams -->
       <ion-item ng-repeat="movie in movies" class="item-thumbnail-left item-text-wrap" style="display:flex;" 
         href="#/movie/{{movie.title}}">
         <img ng-src="data/pics/{{movie.poster.imdb}}">
         <div class="movie-intro">
           <h2>{{movie.title}}</h2>
-          <p>{{movie.release_date | releaseDate }}&nbsp;&nbsp;&nbsp;<score rating="{{movie.rating}}"></score></p>
+          <p>{{movie.release_date}}&nbsp;&nbsp;&nbsp;{{movie.rating}}</p>
         </div>
       </ion-item>
     </ion-list>

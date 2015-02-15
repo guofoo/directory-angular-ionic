@@ -4,44 +4,63 @@
 
     <div class="list card">
       <div class="item item-divider item-text-wrap">
-        <h2>{{movie.title}} ({{movie.release_date | releaseDate }})</h2>
-        <p><score rating="{{movie.rating}}"></score></p>
+        <!-- show movie title and movie's release date-->
+        <h2><!-- title --> (<!-- release date-->)</h2>
       </div>
       <div class="item item-image">
         <img ng-src="data/pics/{{movie.poster.imdb}}" style="width:auto;">
       </div>
       <div class="item item-text-wrap">
-        {{movie.plot_simple}}
+        <!--show the plot_simple attribute of movie -->
+        <!-- complete here -->
       </div>
       
       <ion-item class="item-icon-left item-text-wrap">
         <i class="icon ion-information placeholder-icon"></i>
-        <span ng-bind="movie.genres.join(' ,')"></span>
+        <!-- show movie's genres, seperated by ,-->
+        <span>
+          <!-- complete here -->
+        </span>
       </ion-item>
       
       <ion-item class="item-icon-left item-text-wrap">
         <i class="icon ion-alert-circled placeholder-icon"></i>
-        <span ng-bind="movie.rated"></span>
+        <!-- show movie's rated attribute -->
+        <span>
+          <!-- complete here -->
+        </span>
       </ion-item>
       
       <ion-item class="item-icon-left item-text-wrap">
         <i class="icon ion-flag placeholder-icon"></i>
-        <span ng-bind="movie.language[0]"></span>
+        <!-- show movie's first language (language attribute is an array)-->
+        <span>
+          <!-- complete here -->
+        </span>
       </ion-item>   
   
       <ion-item class="item-icon-left item-text-wrap">
         <i class="icon ion-location placeholder-icon"></i>
-        <span ng-bind="movie.country.join(' ,')"></span>
+        <!-- show movie's countries, joined by ,  -->
+        <span>
+          <!-- complete here -->
+        </span>
       </ion-item>
       
       <ion-item class="item-icon-left item-text-wrap">
         <i class="icon ion-calendar placeholder-icon"></i>
-        <span ng-bind="movie.directors.join(' ,')"></span>
+        <!-- show movie's directors, joined by ,  -->
+        <span>
+          <!-- complete here -->
+        </span>
       </ion-item>
   
       <ion-item class="item-icon-left item-text-wrap">
         <i class="icon ion-person-stalker placeholder-icon"></i>
-        <span ng-bind="movie.actors.slice(0,3).join(' ,')"></span>
+        <!-- show the first three actors of the movie, joined by , -->
+        <span>
+          <!-- complete here -->
+        </span>
       </ion-item>
       
     </div>

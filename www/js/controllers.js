@@ -83,7 +83,9 @@ angular.module('movie.controllers', [])
   if(!movie){
     $location.path('/movies');
   }
-  $scope.movie = movie;
+  
+  //assign the movie passed-in to $scope.movie, complete code below  
+  
 
 }])
 
