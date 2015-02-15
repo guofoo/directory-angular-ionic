@@ -1,8 +1,5 @@
 <ion-view view-title="Movie App">
-  <ion-nav-buttons side="right">
-    <button class="button button-icon ion-more" ng-click="popover.show($event)"></button>
-  </ion-nav-buttons>
-
+  <!-- header bar provide serch functionality -->
   <div class="bar bar-subheader item-input-inset">
     <label class="item-input-wrapper" id="search-input">
       <i class="icon ion-search placeholder-icon"></i>
@@ -19,7 +16,7 @@
         <img ng-src="data/pics/{{movie.poster.imdb}}">
         <div class="movie-intro">
           <h2>{{movie.title}}</h2>
-          <p>{{movie.release_date | releaseDate }}&nbsp;&nbsp;&nbsp;<score rating="{{movie.rating}}"></score></p>
+          <p>{{movie.release_date}}&nbsp;&nbsp;&nbsp;{{movie.rating}}</p>
         </div>
       </ion-item>
     </ion-list>
@@ -33,30 +30,4 @@
 
   </ion-content>
 
-  <div class="bar bar-footer">
-    <div class="slider-title">Filter Rating</div>
-    <div id="slider"></div>
-  </div>
-    
 </ion-view>
-
-<script id="templates/popover.html" type="text/ng-template">
-  <ion-popover-view style="height: 220px">
-    <ion-content>
-      <div class="list">
-        <a class="item" ng-click="sortMovies('title')">
-          Sort by Title
-        </a>
-        <a class="item" ng-click="sortMovies('rating')">
-          Sort by Rating
-        </a>
-        <a class="item" ng-click="sortMovies('release_date')">
-          Sort by Release Date
-        </a>
-        <a class="item" ng-click="sortMovies('rating_count')">
-          Sort by Porpularity
-        </a>        
-      </div>
-    </ion-content>
-  </ion-popover-view>
-</script> 
