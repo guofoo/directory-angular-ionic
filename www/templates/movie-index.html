@@ -19,7 +19,7 @@
         <img ng-src="data/pics/{{movie.poster.imdb}}">
         <div class="movie-intro">
           <h2>{{movie.title}}</h2>
-          <p>{{movie.release_date | releaseDate }}&nbsp;&nbsp;&nbsp;<score rating="{{movie.rating}}"></score></p>
+          <p>{{movie.release_date}}&nbsp;&nbsp;&nbsp;{{movie.rating}}</p>
         </div>
       </ion-item>
     </ion-list>
@@ -33,8 +33,10 @@
 
   </ion-content>
 
+  <!-- show the range slider at the bottom-->
   <div class="bar bar-footer">
     <div class="slider-title">Filter Rating</div>
+    <!-- the slider element is initialized by jquery nouislider to show range slider-->
     <div id="slider"></div>
   </div>
     
